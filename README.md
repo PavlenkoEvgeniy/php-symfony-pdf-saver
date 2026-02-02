@@ -33,13 +33,13 @@ php bin/console app:generate-pdf <input> <output> [--chrome-bin=...] [--timeout=
 - Generate a PDF from a project-relative HTML file:
 
 ```
-php bin/console app:generate-pdf documents/markup/index.html var/generated-pdf/output.pdf --no-sandbox
+php bin/console app:generate-pdf some-example-folder/index.html var/generated-pdf/output.pdf --no-sandbox
 ```
 
 - Use an absolute input path:
 
 ```
-php bin/console app:generate-pdf /application/documents/markup/robert/html/index.html /application/var/generated-pdf/output.pdf --no-sandbox
+php bin/console app:generate-pdf /application/some-example-folder/index.html /application/var/generated-pdf/output.pdf --no-sandbox
 ```
 
 ### ⚙️ Options
