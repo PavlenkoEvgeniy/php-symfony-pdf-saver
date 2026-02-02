@@ -2,7 +2,7 @@ init: generate-env
 	docker compose -f docker/docker-compose.yml up -d --build
 
 generate-env:
-	bin/generate-docker-env.sh
+	bash bin/generate-docker-env.sh
 
 restart:
 	docker compose -f docker/docker-compose.yml up -d
