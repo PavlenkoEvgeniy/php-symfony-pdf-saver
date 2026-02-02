@@ -9,6 +9,13 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Add dependencies
 RUN apt-get update && apt-get install -y \
+    ca-certificates \
+    gnupg \
+    wget \
+    autoconf \
+    g++ \
+    make \
+    pkg-config \
     libsnmp-dev \
     libzip-dev \
     libonig-dev \
@@ -25,8 +32,20 @@ RUN apt-get update && apt-get install -y \
     git \
     curl
 
+# Install Xdebug for code coverage
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
+
 # Install aspell for checking grammar in project
 RUN apt-get install aspell aspell-en -y
+
+# Install Google Chrome
+RUN mkdir -p /etc/apt/keyrings \
+    && wget -qO /etc/apt/keyrings/google-chrome.gpg https://dl.google.com/linux/linux_signing_key.pub \
+    && echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends google-chrome-stable \
+    && rm -rf /var/lib/apt/lists/*
 
 # Create download directory
 RUN mkdir -p /application/var/downloads/
