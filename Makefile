@@ -1,8 +1,13 @@
-init: generate-env
-	docker compose -f docker/docker-compose.yml up -d --build
+init: generate-env build composer-install
+
+build:
+    docker compose -f docker/docker-compose.yml up -d --build
 
 generate-env:
 	bash bin/generate-docker-env.sh
+
+composer-install:
+    docker exec pdfsaver-php-fpm composer install
 
 restart:
 	docker compose -f docker/docker-compose.yml up -d
