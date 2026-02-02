@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build and start containers
+        run: make init
+
+      - name: Run grammar check
+        run: make peck
+
+      - name: Run lint
+        run: make cs-check
+
+      - name: Run static analysis
+        run: make phpstan
+
+      - name: Run tests
+        run: make test
