@@ -17,6 +17,9 @@ stop:
 
 lint: cs-fix phpstan peck
 
+security-check:
+	docker exec pdfsaver-php-fpm composer audit
+
 cs-check:
 	docker exec pdfsaver-php-fpm vendor/bin/php-cs-fixer fix --dry-run --diff --allow-risky=yes
 
