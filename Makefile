@@ -1,3 +1,21 @@
+help:
+	@echo "+------------------------------------------------------------------------------+"
+	@echo "|                         List of available commands:                          |"
+	@echo "+------------------------------------------------------------------------------+"
+	@echo "1. init ............................................ Initialize the application."
+	@echo "2. build .................................... Build and start Docker containers."
+	@echo "3. restart .......................................... Restart Docker containers."
+	@echo "4. stop ................................................ Stop Docker containers."
+	@echo "5. lint ................. Run code quality checks (PHP CS Fixer, PHPStan, Peck)."
+	@echo "6. security-check ........................... Run security audit using Composer."
+	@echo "7. cs-check ............................... Check code style using PHP CS Fixer."
+	@echo "8. cs-fix ............................ Fix code style issues using PHP CS Fixer."
+	@echo "9. peck ............................................ Run Peck for check grammar."
+	@echo "10. phpstan ................................... Run PHPStan for static analysis."
+	@echo "11. test .................................................... Run PHPUnit tests."
+	@echo "12. test-coverage ........................ Run PHPUnit tests with code coverage."
+	@echo "+------------------------------------------------------------------------------+"
+
 init: generate-env build composer-install
 
 build:
