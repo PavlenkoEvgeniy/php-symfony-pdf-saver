@@ -101,9 +101,17 @@ A common location is:
 
 ## 🧪 Tests
 
-The command is covered by a test that generates a real PDF from a minimal HTML example and saves it to:
+The test suite exercises both the console command and the PDF generator service. It covers:
+
+- Command failures (missing input file, invalid output directory).
+- Successful PDF generation from a file and from raw HTML.
+- Failure when the Chrome binary is invalid.
+
+During tests, real PDF files are written to:
 
 - `var/generated-pdf/output.pdf`
+- `var/generated-pdf/from-file.pdf`
+- `var/generated-pdf/from-html.pdf`
 
 Run tests:
 
